@@ -1,0 +1,133 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #3a3f51, #1a1f31);
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-logo {
+  color: #ffd700;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  transition: transform 0.3s ease-in-out;
+  margin-right: 5rem;
+}
+
+.navbar-links li {
+  margin: 0 1rem;
+  position: relative;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem;
+  display: inline-block;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: #ffd700;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.navbar-links a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.navbar-links a:hover {
+  transform: scale(1.1);
+}
+
+.menu-icon {
+  font-size: 1.8rem;
+  color: #ffd700;
+  cursor: pointer;
+  display: none;
+}
+
+.close-drawer {
+  font-size: 1.2rem;
+  color: #ffd700;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  display: none;
+}
+
+.close-drawer:hover {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .navbar-links {
+    margin: 0;
+  }
+
+  .close-drawer {
+    display: block;
+  }
+
+  .navbar-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 60%;
+    background: radial-gradient(circle at top left, #2b2d42, #1c1e2b);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(100%);
+    z-index: 100;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+  }
+
+  .navbar-links.active {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .navbar-links li{
+    margin: 1.5rem 0;
+  }
+  
+  .menu-icon{
+    display: block;
+  }
+}
